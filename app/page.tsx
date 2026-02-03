@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
+import DOMPurify from 'dompurify';
 
 interface TreeNode {
   id: string;
@@ -16,9 +17,14 @@ interface NodeTreeProps {
 function NodeTree({ node, depth = 0 }: NodeTreeProps) {
   const indent = '\u00A0\u00A0'.repeat(depth * 2);
   
+  // Sanitize HTML to prevent XSS attacks while allowing safe formatting tags
+  const sanitizedName = DOMPurify.sanitize(node.name);
+  
   return (
     <>
-      <div>{indent}• {node.name}</div>
+      <div>
+        {indent}• <span dangerouslySetInnerHTML={{ __html: sanitizedName }} />
+      </div>
       {node.children.map((child) => (
         <NodeTree key={child.id} node={child} depth={depth + 1} />
       ))}

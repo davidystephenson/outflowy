@@ -7,7 +7,7 @@ The API Key input is obscured like a password, but not the Node ID.
 The API Key is not stored anywhere.
 Each time the user submits the form, if the API Key or Node ID are missing, the user is alerted about what is missing.
 If both are provided, the API Key and Node ID are sent to an API route that responds with a single random incomplete direct child of the IDed node and that child's incomplete children nodes recursively.
-The UI displays the recursive hierarchy with nested bullet points.
+The UI displays the recursive hierarchy with nested bullet points, embedding the name as HTML.
 While the data is loading, a "Loading..." message appears.
 If any error occurs, display the message in an alert.
 Submitting the form should not clear it to support resubmission.
