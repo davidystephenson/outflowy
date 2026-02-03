@@ -1,4 +1,22 @@
-10c10
-< The UI displays the recursive hierarchy with nested bullet points.
+5c5
+< The interface shows a form with with two inputs, API Key and Node ID.
 ---
-> The UI displays the recursive hierarchy with nested bullet points, embbedding the name as HTML.
+> The interface shows a form with with five inputs, API Key, Source Node ID, Rejected Node ID, Concerned Node ID, and Accepted Node ID.
+7,10c7,9
+< The API Key is not stored anywhere.
+< Each time the user submits the form, if the API Key or Node ID are missing, the user is alerted about what is missing.
+< If both are provided, the API Key and Node ID are sent to an API route that responds with a single random incomplete direct child of the IDed node and that child's incomplete children nodes recursively.
+< The UI displays the recursive hierarchy with nested bullet points, embedding the name as HTML.
+---
+> The API Key is only temporary stored in local component state, but not stored permanently anywhere.
+> Each time the user submits the form, if any input is empty, the user is alerted about what is missing.
+> If all are provided, the API Key and Source Node ID are sent to an API route that responds with a single random incomplete direct child of the node with the Source ID and the name of that child's incomplete children nodes recursively.
+11a11,18
+> The UI displays the recursive hierarchy with nested bullet points, embedding the name as HTML.
+> Below the bullet points are three buttons, Reject, Concern, and Accept.
+> If the user clicks the Reject button, the displayed node is moved to the node with the Rejected Node ID.
+> If the user clicks the Concern button, the displayed node is moved to the node with the Concerned Node ID.
+> If the user clicks the Accept button, the displayed node is moved to the node with the Accepted Node ID.
+> After any of these buttons are clicked, a new random incomplete direct child of the node with the Source ID is displayed.
+> If any of the target nodes does not exist, the UI alerts an error explaining the issue.
+> While any button operation is ongoing, all buttons and the form should be disabled.
