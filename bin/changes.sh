@@ -1,0 +1,5 @@
+#!/bin/bash
+
+diff READMEold.md README.md | tee READMEdiff.diff
+
+opencode --prompt "I planned some new features in README.md. The older version is READMEold.md, and the diff is in READMEdiff.diff. Read all the related files carefully. You will need to implement the changes. Read all the related files carefully. It's critical we get this right. Tell me your questions, suggestions, or concerns. If you do have questions, give each point a unique number with a question or claim I can respond to to facilate communicating simultaneously about multiple issues. If you have no questions, DO NOT give a list, just ask to proceed. When I reply, think carefully if you have any follow up questions, suggestions or concerns. Only once you have no follow up questions, suggestions, or concerns should you begin implementation." --agent plan
