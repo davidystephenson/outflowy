@@ -19,3 +19,4 @@ While any button operation is ongoing, all buttons and the form should be disabl
 If any error occurs, display the message in an alert.
 Submitting the form should not clear it to support resubmission.
 The app is unstyled.
+Avoid multi-component files, place each client component in it's own file in a /components directory.

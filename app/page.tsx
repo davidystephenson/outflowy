@@ -1,36 +1,7 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
-import DOMPurify from 'dompurify';
-
-interface TreeNode {
-  id: string;
-  name: string;
-  children: TreeNode[];
-}
-
-interface NodeTreeProps {
-  node: TreeNode;
-  depth?: number;
-}
-
-function NodeTree({ node, depth = 0 }: NodeTreeProps) {
-  const indent = '\u00A0\u00A0'.repeat(depth * 2);
-  
-  // Sanitize HTML to prevent XSS attacks while allowing safe formatting tags
-  const sanitizedName = DOMPurify.sanitize(node.name);
-  
-  return (
-    <>
-      <div>
-        {indent}• <span dangerouslySetInnerHTML={{ __html: sanitizedName }} />
-      </div>
-      {node.children.map((child) => (
-        <NodeTree key={child.id} node={child} depth={depth + 1} />
-      ))}
-    </>
-  );
-}
+import NodeTree, { TreeNode } from '@/components/NodeTree';
 
 export default function Home() {
   const [apiKey, setApiKey] = useState('');
